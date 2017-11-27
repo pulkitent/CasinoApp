@@ -1,0 +1,173 @@
+<nav class="navbar navbar-inverse topnav">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand"><h1>Roulette</h1></a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li><div class="topRightPanel" > Welcome :: {{loggedObj.Name}}
+        <br>
+        Account Balance :: {{balance}}</div>
+      </li>
+      <li><button (click)="setCookie()" [routerLink] = "['/login']"> Log Out</button></li>
+    </ul>
+  </div>
+</nav>
+
+<img class="image" src="http://www.roulette.co.uk/wp-content/uploads/european-roulette.jpeg">
+<div class="mainComponent">
+
+  <table cellpadding="10">
+    <tr>
+      <td >1st 12</td>
+      <td><input #qty1 type="number" [(ngModel)] = "inpbox[0]" step="500" max="10000" min="0"></td>
+      <td >2nd 12</td>
+      <td><input  #qty2 [(ngModel)] = "inpbox[1]" type="number" step="500" max="10000" min="0">
+      </td>
+      <td >3rd 12</td>
+      <td><input  #qty3 [(ngModel)] = "inpbox[2]" type="number" step="500" max="10000" min="0">
+      </td>
+    </tr>
+
+
+    <tr>
+      <td >0</td>
+      <td><input  #qty4 [(ngModel)] = "inpbox[3]" type="number" step="500" max="10000" min="0">
+      </td>
+      <td >1 to 18</td>
+      <td><input  #qty5 [(ngModel)] = "inpbox[4]" type="number" step="500" max="10000" min="0">
+      </td>
+      <td >19 to 36</td>
+      <td><input  #qty6 [(ngModel)] = "inpbox[5]" type="number"  step="500" max="10000" min="0">
+      </td>
+    </tr>
+
+    <tr>
+      <td>Even</td>
+      <td><input  #qty7 [(ngModel)] = "inpbox[6]" type="number"  step="500" max="10000" min="0">
+      </td>
+      <td>Odd</td>
+      <td><input #qty8 [(ngModel)] = "inpbox[7]" type="number"   step="500" max="10000" min="0">
+      </td>
+
+      <td>
+        <button  name="submitbutton" data-toggle="modal" data-target="#myModal"  id="submitbutton" class="submitbutton">Play</button>
+      </td>
+      <td></td>
+    </tr>
+  </table>
+</div>
+<div class="invisible">
+  <input [(ngModel)] = "balance" >
+  <button  name="submitbutton" data-toggle="modal" data-target="#lessAmountModal"  id="lessAmount" class="submitbutton"></button>
+  <button  name="submitbutton" data-toggle="modal" data-target="#resultModal"  id="result" class="submitbutton"></button>
+  <button  name="submitbutton" data-toggle="modal" data-target="#selectOneModal"  id="selectOne" class="submitbutton"></button>
+  <button  name="submitbutton" data-toggle="modal" data-target="#multipleOfModal"  id="multipleOf" class="submitbutton"></button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" >Try Your Luck</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to try your luck for current selection?
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="block()" class="btn btn-default" data-dismiss="modal">Yes</button>
+        <button type="button"  class="btn btn-default" data-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Result Modal -->
+<div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Result</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Random Number is {{random}}<br>
+        {{message}}<br>
+        Winning amount = {{sum*multiple}}
+      </div>
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Less Amount Modal -->
+
+<div class="modal fade" id="lessAmountModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Error</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Sorry Dear<br>
+        You have insufficient balance
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="Reset()"  class="btn btn-default" data-dismiss="modal">Reset Game</button>
+        <button type="button"  class="btn btn-default" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Select One Modal -->
+
+<div class="modal fade" id="selectOneModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Error</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Please bet in one category only
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="Reset()"  class="btn btn-default" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Multiple of Modal -->
+<div class="modal fade" id="multipleOfModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" >Error</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Amount Should be multiple of 500
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>

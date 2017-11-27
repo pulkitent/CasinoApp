@@ -1,0 +1,25 @@
+.topnav {
+  background-color: #047736;
+  overflow: hidden;
+}
+.borderclr{
+  padding: 3%;
+  border-radius: 5px;
+  border: 1px solid #218838;
+  background-color: #c8e6c9 ;
+}
+
+.center{
+  margin-top: 15%;
+  margin-left: 35%;
+  margin-right: 30%;
+}
+
+.centerBtn{
+  margin-left: 35%;
+  margin-right: 30%;
+}
+.img{
+
+  background-image: url("https://lh3.googleusercontent.com/X69Ix88oE601JuUWQiVBpxpkcj6nyD__gRDqQOu7-ZS1mnWyGXWrKmD-3fNwlRE89Q=h900");
+}

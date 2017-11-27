@@ -1,0 +1,39 @@
+<div class = "img">
+<nav class="navbar navbar-inverse topnav">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand"><h1>{{title}}</h1></a>
+    </div>
+  </div>
+</nav>
+
+
+
+<div class="col-md-4 center borderclr">
+  <div class="alert alert-danger" *ngIf = "lognotsuccess">
+    <strong>Oops!</strong> You Are Not A Registered User</div>
+
+  <div class="login-panel panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Login</h3>
+    </div>
+    <div class="panel-body">
+      <form role="form">
+        <fieldset>
+          <div class="form-group">
+            <input class="form-control" placeholder="Username" #email autofocus="">
+          </div>
+          <button (click)="loginUser(email.value)" class="btn btn-sm btn-success centerBtn"><h5>Start Playing</h5></button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+<br><br><br><br><br><br><br><br><br>
+
+
+</div>
+
